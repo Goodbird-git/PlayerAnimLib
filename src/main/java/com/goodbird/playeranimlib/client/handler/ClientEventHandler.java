@@ -1,5 +1,6 @@
-package com.goodbird.playeranimlib.client;
+package com.goodbird.playeranimlib.client.handler;
 
+import com.goodbird.playeranimlib.client.renderer.GeoFirstPersonRender;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;

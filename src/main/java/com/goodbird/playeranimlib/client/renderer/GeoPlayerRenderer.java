@@ -1,11 +1,11 @@
-package com.goodbird.playeranimlib.client;
+package com.goodbird.playeranimlib.client.renderer;
 
+import com.goodbird.playeranimlib.client.model.GeoPlayerModel;
 import net.minecraft.entity.player.EntityPlayer;
 import software.bernie.geckolib3.core.IAnimatableModel;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.util.Color;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
-import software.bernie.geckolib3.util.AnimationUtils;
 
 public class GeoPlayerRenderer extends GeoEntityRenderer {
     public static GeoPlayerRenderer INSTANCE = new GeoPlayerRenderer();

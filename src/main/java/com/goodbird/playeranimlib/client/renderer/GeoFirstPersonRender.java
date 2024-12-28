@@ -1,5 +1,7 @@
-package com.goodbird.playeranimlib.client;
+package com.goodbird.playeranimlib.client.renderer;
 
+import com.goodbird.playeranimlib.client.model.GeoPlayerModel;
+import com.goodbird.playeranimlib.common.entity.ExtendedPlayer;
 import net.geckominecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,9 +27,9 @@ public class GeoFirstPersonRender extends GeoEntityRenderer {
         return animatable.hurtTime <= 0 && animatable.deathTime <= 0 ? Color.ofRGBA(255, 255, 255, 255) : Color.ofRGBA(255, 153, 153, 255);
     }
 
-    public boolean isBoneToDraw(GeoBone bone){
-        String[] toDraw = new String[]{"rightArm", "leftArm"};
-        for(String name : toDraw){
+    public boolean isBoneToDraw(GeoBone bone, Object animatable){
+        ExtendedPlayer player = ExtendedPlayer.get((EntityPlayer) animatable);
+        for(String name : player.getVisibleFPBones()){
             if(bone.getName().equals(name)){
                 return true;
             }
@@ -69,7 +71,7 @@ public class GeoFirstPersonRender extends GeoEntityRenderer {
 
                 while(var8.hasNext()) {
                     GeoBone childBone = (GeoBone)var8.next();
-                    boolean nextDraw = draw | isBoneToDraw(childBone);
+                    boolean nextDraw = draw | isBoneToDraw(childBone, animatable);
                     this.renderRecursively(builder, animatable, childBone, red, green, blue, alpha, nextDraw);
                 }
             }

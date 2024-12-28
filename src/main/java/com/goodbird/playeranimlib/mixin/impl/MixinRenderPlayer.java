@@ -1,6 +1,6 @@
 package com.goodbird.playeranimlib.mixin.impl;
 
-import com.goodbird.playeranimlib.client.GeoPlayerRenderer;
+import com.goodbird.playeranimlib.client.renderer.GeoPlayerRenderer;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderPlayer;

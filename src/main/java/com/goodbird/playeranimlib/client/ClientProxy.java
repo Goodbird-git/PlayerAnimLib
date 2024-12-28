@@ -1,6 +1,7 @@
 package com.goodbird.playeranimlib.client;
 
 import com.goodbird.playeranimlib.CommonProxy;
+import com.goodbird.playeranimlib.client.handler.ClientEventHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.common.MinecraftForge;
