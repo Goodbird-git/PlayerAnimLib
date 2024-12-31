@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
@@ -16,9 +17,11 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
     private String geckoModelPath;
     private String geckoAnimFilePath;
     private String geckoTexturePath;
-    private String[] visibleFPBones;
+    private String[] includeFPBones;
+    private String[] excludeFPBones;
     private String[] headBones;
     private boolean useSkin;
+    private ResourceLocation animationPredicate;
 
     public static void register(EntityPlayer player) {
         player.registerExtendedProperties(EXT_PROP_NAME, new ExtendedPlayer(player));
@@ -30,12 +33,14 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 
     public ExtendedPlayer(EntityPlayer player) {
         this.player = player;
-        geckoModelPath = "geckolib3:geo/bat.geo.json";
-        geckoAnimFilePath = "geckolib3:animations/bat.animation.json";
-        geckoTexturePath = "geckolib3:textures/model/entity/bat.png";
-        visibleFPBones = new String[]{"rightArm", "leftArm"};
+        geckoModelPath = "playeranimlib:geo/player_model.geo.json";
+        geckoAnimFilePath = "playeranimlib:animations/player.animation.json";
+        geckoTexturePath = "playeranimlib:textures/model/entity/bat.png";
+        includeFPBones = new String[]{"body"};
+        excludeFPBones = new String[]{"head"};
         headBones = new String[]{"head"};
-        useSkin = false;
+        useSkin = true;
+        animationPredicate = new ResourceLocation("playeranimlib", "default");
     }
 
     @Override
@@ -43,17 +48,27 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
         compound.setString("geckoModelPath", geckoModelPath);
         compound.setString("geckoAnimFilePath", geckoAnimFilePath);
         compound.setString("geckoTexturePath", geckoTexturePath);
-        NBTTagList visibleFPBonesTag = new NBTTagList();
-        for(String entry : visibleFPBones){
-            visibleFPBonesTag.appendTag(new NBTTagString(entry));
+
+        NBTTagList includeFPBonesTag = new NBTTagList();
+        for(String entry : includeFPBones){
+            includeFPBonesTag.appendTag(new NBTTagString(entry));
         }
-        compound.setTag("visibleFPBones", visibleFPBonesTag);
+        compound.setTag("includeFPBones", includeFPBonesTag);
+
+        NBTTagList excludeFPBonesTag = new NBTTagList();
+        for(String entry : excludeFPBones){
+            excludeFPBonesTag.appendTag(new NBTTagString(entry));
+        }
+        compound.setTag("excludeFPBones", excludeFPBonesTag);
+
         NBTTagList headBonesTag = new NBTTagList();
         for(String entry : headBones){
             headBonesTag.appendTag(new NBTTagString(entry));
         }
         compound.setTag("headBones", headBonesTag);
+
         compound.setBoolean("useSkin", useSkin);
+        compound.setString("animationPredicate", animationPredicate.toString());
     }
 
     @Override
@@ -61,17 +76,27 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
         geckoModelPath = compound.getString("geckoModelPath");
         geckoAnimFilePath = compound.getString("geckoAnimFilePath");
         geckoTexturePath = compound.getString("geckoTexturePath");
-        NBTTagList visibleFPBonesTag = compound.getTagList("visibleFPBones", 8);
-        visibleFPBones = new String[visibleFPBonesTag.tagCount()];
-        for(int i=0;i<visibleFPBonesTag.tagCount();i++){
-            visibleFPBones[i]=visibleFPBonesTag.getStringTagAt(i);
+
+        NBTTagList includeFPBonesTag = compound.getTagList("includeFPBones", 8);
+        includeFPBones = new String[includeFPBonesTag.tagCount()];
+        for(int i=0;i<includeFPBonesTag.tagCount();i++){
+            includeFPBones[i]=includeFPBonesTag.getStringTagAt(i);
         }
+
+        NBTTagList excludeFPBonesTag = compound.getTagList("excludeFPBones", 8);
+        excludeFPBones = new String[excludeFPBonesTag.tagCount()];
+        for(int i=0;i<excludeFPBonesTag.tagCount();i++){
+            excludeFPBones[i]=excludeFPBonesTag.getStringTagAt(i);
+        }
+
         NBTTagList headBonesTag = compound.getTagList("headBones", 8);
         headBones = new String[headBonesTag.tagCount()];
         for(int i=0;i<headBonesTag.tagCount();i++){
             headBones[i]=headBonesTag.getStringTagAt(i);
         }
+
         useSkin = compound.getBoolean("useSkin");
+        animationPredicate = new ResourceLocation(compound.getString("animationPredicate"));
     }
 
     public void syncToOthers(){
@@ -110,12 +135,21 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
         syncToOthers();
     }
 
-    public String[] getVisibleFPBones() {
-        return visibleFPBones;
+    public String[] getIncludeFPBones() {
+        return includeFPBones;
     }
 
-    public void setVisibleFPBones(String[] visibleFPBones) {
-        this.visibleFPBones = visibleFPBones;
+    public void setIncludeFPBones(String[] includeFPBones) {
+        this.includeFPBones = includeFPBones;
+        syncToOthers();
+    }
+
+    public String[] getExcludeFPBones() {
+        return excludeFPBones;
+    }
+
+    public void setExcludeFPBones(String[] excludeFPBones) {
+        this.excludeFPBones = excludeFPBones;
         syncToOthers();
     }
 

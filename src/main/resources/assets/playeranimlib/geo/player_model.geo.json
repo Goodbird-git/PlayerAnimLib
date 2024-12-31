@@ -1,0 +1,179 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.custom_model",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "main",
+					"pivot": [0, 12, -9]
+				},
+				{
+					"name": "body",
+					"parent": "main",
+					"pivot": [0, 9.43717, 1.86327]
+				},
+				{
+					"name": "bodypart",
+					"parent": "body",
+					"pivot": [0, 10.43717, -0.13673],
+					"cubes": [
+						{"origin": [-4, 10.43717, -2.13673], "size": [8, 12, 4], "uv": [16, 16]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "bodypart",
+					"pivot": [-6, 20.43717, -0.13673],
+					"cubes": [
+						{"origin": [-8, 15.43717, -2.13673], "size": [4, 7, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "right_arm_2",
+					"parent": "right_arm",
+					"pivot": [-6, 15.43717, 1.86327],
+					"cubes": [
+						{"origin": [-7.99999, 10.4441, -2.13673], "size": [4, 5, 4], "uv": [40, 23]}
+					]
+				},
+				{
+					"name": "right_arm_2_locator",
+					"parent": "right_arm_2",
+					"pivot": [-5.99999, 12.4441, -0.13673],
+					"locators": {
+						"right_arm_2": [-5.99999, 12.4441, -0.13673]
+					}
+				},
+				{
+					"name": "held_item",
+					"parent": "right_arm_2",
+					"pivot": [-5.99999, 12.4441, -0.13673],
+					"cubes": [
+						{"origin": [-5.99999, 8.4441, -7.13673], "size": [0, 8, 8], "uv": [16, 13]}
+					]
+				},
+				{
+					"name": "held_item_locator",
+					"parent": "held_item",
+					"pivot": [-5.99999, 12.4441, -0.13673],
+					"locators": {
+						"held_item": [-5.99999, 12.4441, -0.13673]
+					}
+				},
+				{
+					"name": "left_arm",
+					"parent": "bodypart",
+					"pivot": [6, 20.43717, -0.13673],
+					"cubes": [
+						{"origin": [4, 15.43717, -2.13673], "size": [4, 7, 4], "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "left_arm_2",
+					"parent": "left_arm",
+					"pivot": [6, 15.43717, 1.86327],
+					"cubes": [
+						{"origin": [4, 10.43717, -2.13673], "size": [4, 5, 4], "uv": [40, 23]}
+					]
+				},
+				{
+					"name": "left_arm_2_locator",
+					"parent": "left_arm_2",
+					"pivot": [6, 12.43717, -0.13673],
+					"locators": {
+						"left_arm_2": [6, 12.43717, -0.13673]
+					}
+				},
+				{
+					"name": "left_held_item",
+					"parent": "left_arm_2",
+					"pivot": [6, 12.43717, -0.13673],
+					"cubes": [
+						{"origin": [6, 8.43717, -7.13673], "size": [0, 8, 8], "uv": [16, 13]}
+					]
+				},
+				{
+					"name": "left_held_item_locator",
+					"parent": "left_held_item",
+					"pivot": [6, 12.43717, -0.13673],
+					"locators": {
+						"left_held_item": [6, 12.43717, -0.13673]
+					}
+				},
+				{
+					"name": "head",
+					"parent": "bodypart",
+					"pivot": [0, 22.43717, -0.13673],
+					"cubes": [
+						{"origin": [-4, 22.43717, -4.13673], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "headwear",
+					"parent": "head",
+					"pivot": [0, 22.43717, -0.13673]
+				},
+				{
+					"name": "left_leg",
+					"parent": "main",
+					"pivot": [2, 10.43717, -0.13673],
+					"cubes": [
+						{"origin": [0, 4.43717, -2.13673], "size": [4, 6, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "left_leg_2",
+					"parent": "left_leg",
+					"pivot": [2, 4.43717, -2.13673],
+					"cubes": [
+						{"origin": [0, -1.56283, -2.13673], "size": [4, 6, 4], "uv": [0, 22]}
+					]
+				},
+				{
+					"name": "left_leg_2_locator",
+					"parent": "left_leg_2",
+					"pivot": [2, 1.43717, -0.13673],
+					"locators": {
+						"left_leg_2": [2, 1.43717, -0.13673]
+					}
+				},
+				{
+					"name": "right_leg",
+					"parent": "main",
+					"pivot": [-2, 10.43717, -0.13673],
+					"cubes": [
+						{"origin": [-4, 4.43717, -2.13673], "size": [4, 6, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "right_leg_2",
+					"parent": "right_leg",
+					"pivot": [-2, 4.43717, -2.13673],
+					"cubes": [
+						{"origin": [-4, -1.56283, -2.13673], "size": [4, 6, 4], "uv": [0, 22]}
+					]
+				},
+				{
+					"name": "right_leg_2_locator",
+					"parent": "right_leg_2",
+					"pivot": [-2, 1.43717, -0.13673],
+					"locators": {
+						"right_leg_2": [-2, 1.43717, -0.13673]
+					}
+				},
+				{
+					"name": "bone",
+					"pivot": [0, 0, 0]
+				}
+			]
+		}
+	]
+}

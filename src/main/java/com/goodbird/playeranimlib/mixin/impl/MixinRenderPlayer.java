@@ -22,7 +22,7 @@ public abstract class MixinRenderPlayer extends RendererLivingEntity {
     public void doRender(AbstractClientPlayer p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_, CallbackInfo info) {
         if(p_76986_1_!=null) {
             info.cancel();
-            GeoPlayerRenderer.INSTANCE.doRender((Entity) p_76986_1_, p_76986_2_, p_76986_4_ - 1.75, p_76986_6_, p_76986_8_, p_76986_9_);
+            GeoPlayerRenderer.INSTANCE.doRender((Entity) p_76986_1_, p_76986_2_, p_76986_4_ - 1.5, p_76986_6_, p_76986_8_, p_76986_9_);
         }
     }
 }
